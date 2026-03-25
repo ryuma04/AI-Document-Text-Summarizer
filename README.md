@@ -1,6 +1,6 @@
 Here is your **AI Document Summarizer Web App** rewritten in the same clean structure and formatting style as the Illegal Buildings project..
 
----
+----
 
 # AI Document Summarizer Web App.....
 
