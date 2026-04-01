@@ -26,33 +26,26 @@ body {
   overflow-x: hidden;
 }
 
-/* Background animated orbs */
+/* Background orbs (static) */
 .bg-orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
   z-index: -1;
-  animation: float 10s infinite ease-in-out alternate;
 }
 .orb-1 {
   width: 400px;
   height: 400px;
-  background: rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.2);
   top: -100px;
   left: -100px;
 }
 .orb-2 {
   width: 300px;
   height: 300px;
-  background: rgba(139, 92, 246, 0.3);
+  background: rgba(139, 92, 246, 0.2);
   bottom: -50px;
   right: -50px;
-  animation-delay: -5s;
-}
-
-@keyframes float {
-  0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(20px) scale(1.05); }
 }
 
 .app-container {
@@ -67,20 +60,14 @@ body {
 /* Glassmorphism Panel */
 .glass-panel {
   background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
   box-shadow: var(--glass-shadow);
   padding: 30px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.glass-panel:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
 }
 
 /* Typography */
@@ -211,8 +198,7 @@ select.form-control option {
 }
 
 .btn-primary:hover {
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
-  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
 }
 
 .btn-secondary {
@@ -362,12 +348,6 @@ select.form-control option {
   padding: 12px 18px;
   border-radius: 16px;
   line-height: 1.5;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .msg-user {
