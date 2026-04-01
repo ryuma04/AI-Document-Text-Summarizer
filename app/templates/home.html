@@ -20,8 +20,9 @@
             <div style="margin-top: 20px;">
                 <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 10px;"><i class="fas fa-info-circle" style="color: var(--accent-blue);"></i> Summary Types</h4>
                 <ul style="color: var(--text-muted); padding-left: 20px; line-height: 1.6; font-size: 0.95rem;">
-                    <li class="mb-2"><strong style="color: var(--text-primary);">Extractive:</strong> Pulls out the most statistically significant sentences exactly as they appear in the original text.</li>
-                    <li><strong style="color: var(--text-primary);">Abstractive:</strong> Uses an advanced neural network to read the text and generate a brand-new, concise summary (like a human would).</li>
+                    <li class="mb-2"><strong style="color: var(--text-primary);">Extractive:</strong> Uses TextRank graph-based ranking to identify and extract the most important sentences from the original text.</li>
+                    <li class="mb-2"><strong style="color: var(--text-primary);">Abstractive:</strong> Uses an advanced neural network to read the text and generate a brand-new, concise summary (like a human would).</li>
+                    <li><strong style="color: var(--text-primary);">Hybrid:</strong> Best of both worlds — first extracts key sentences, then uses AI to polish them into a natural, fluent summary.</li>
                 </ul>
             </div>
         </div>
@@ -65,7 +66,7 @@
 
                 <div class="form-group">
                     <label class="form-label mb-3">Analysis Mode</label>
-                    <div style="display: flex; gap: 20px;">
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" id="extractive" name="summary_type" value="extractive" checked>
                             <label class="form-check-label" for="extractive">Extractive</label>
@@ -73,6 +74,10 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" id="abstractive" name="summary_type" value="abstractive">
                             <label class="form-check-label" for="abstractive">Abstractive</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="hybrid" name="summary_type" value="hybrid">
+                            <label class="form-check-label" for="hybrid">Hybrid ✨</label>
                         </div>
                     </div>
                 </div>

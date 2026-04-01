@@ -10,6 +10,9 @@ from werkzeug.utils import secure_filename
 
 qa_pipeline = pipeline("question-answering", model="distilbert-base-cased-distilled-squad")
 
+# Initialize summarizer once at module level (avoids reloading models per request)
+summarizer = Summarizer(nlp)
+
 ALLOWED_EXTENSIONS = {'txt', 'pdf'}
 UPLOAD_FOLDER = "uploads"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -65,7 +68,7 @@ def logout():
 
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    summarizer = Summarizer(nlp)
+    global summarizer
     form = SubmitTextForm(size=600)
     
     if form.validate_on_submit():
@@ -95,6 +98,8 @@ def index():
             word_weights, sentence_weights, sents, summary = summarizer.summarize_text(text, num_sentences)
         elif summary_type == 'abstractive':
             word_weights, sentence_weights, sents, summary = summarizer.abstractive_summarize(text, num_sentences)
+        elif summary_type == 'hybrid':
+            word_weights, sentence_weights, sents, summary = summarizer.hybrid_summarize(text, num_sentences)
 
         top_five_words = sorted(word_weights, key=word_weights.get, reverse=True)[:5] if word_weights else []
         sentence_weights = [value for key, value in sentence_weights.items()] if sentence_weights else []
